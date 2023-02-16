@@ -49,16 +49,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state == "IDLE")
+        if(GameManager.instance.state == "PLAY")
         {
-            rb.velocity = Vector2.zero;
-            StartCoroutine(Jump());
-        }
-        if(Input.GetMouseButton(0))
-        {
-            if(state == "ACTIVE")
+            if (state == "IDLE")
             {
-                rb.velocity = new Vector3(0,0,speed);
+                rb.velocity = Vector2.zero;
+                StartCoroutine(Jump());
+            }
+            if (Input.GetMouseButton(0))
+            {
+                if (state == "ACTIVE")
+                {
+                    rb.velocity = new Vector3(0, 0, speed);
+                }
+            }
+
+            if (transform.position.z > 0)
+            {
+                GameManager.instance.Ending(true);
             }
         }
     }

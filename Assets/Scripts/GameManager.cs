@@ -18,6 +18,13 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void Ending(bool win)
+    {
+        state = "END";
+        timeText.text = "LOSE";
+        if (win) { timeText.text = "WIN"; }
+    }
+
 
     // Update is called once per frame
     void Update()
